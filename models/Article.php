@@ -32,11 +32,11 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title'], 'required', 'message' => 'Указание заголовка к статье — обязательно.'],
             [['title', 'description', 'content'], 'string'],
-            [['date'], 'date', 'format' => 'php:Y-m-d'],
+            [['date'], 'date', 'format' => 'php:Y-m-d', 'message' => 'Введите дату формата ГГГГ-ММ-ДД, пока мы не озаботились сделать конвертацию.'],
             [['date'], 'default', 'value' => date('Y-m-d')],
-            [['title'], 'string', 'max' => 32],
+            [['title'], 'string', 'max' => 32, 'message' => 'Ваш заголовок слишком длинный, попробуйте сократить пару слов.'],
         ];
     }
 
